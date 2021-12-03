@@ -6,7 +6,7 @@ pub enum Error {
     Program(&'static str),
 }
 
-impl From<io: Error> for Error {
+impl From<io::Error> for Error {
     fn from(e: io::Error) -> Error {
         Error::Io(e)
     }
