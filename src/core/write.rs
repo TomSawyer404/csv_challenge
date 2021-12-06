@@ -21,3 +21,26 @@ pub fn replace_column(data: String, column: &str, replacement: &str) -> Result<S
     }
     Ok(result)
 }
+
+#[cfg(test)]
+mod test {
+    use super::read::load_csv;
+    use super::replace_column;
+    use std::path::PathBuf;
+
+    #[test]
+    fn test_valid_replace_column() {
+        let filename = PathBuf::from("./input/challenge.csv");
+        let csv_data = load_csv(filename).unwrap();
+        let modified_data = replace_column(csv_data, "City", "Beijing");
+        assert!(modified_data.is_ok());
+    }
+
+    #[test]
+    fn test_invalid_replace_column() {
+        let filename = PathBuf::from("./input/challenge.csv");
+        let csv_data = load_csv(filename).unwrap();
+        let modified_data = replace_column(csv_data, "City2", "Beijing");
+        assert!(modified_data.is_err());
+    }
+}

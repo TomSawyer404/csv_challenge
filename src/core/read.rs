@@ -32,3 +32,33 @@ fn write(data: &str, filename: &str) -> Result<(), Error> {
     buffer.write_all(data.as_bytes())?;
     Ok(())
 }
+
+#[cfg(test)]
+mod test {
+    use crate::core::read::write_csv;
+
+    use super::load_csv;
+    use std::path::PathBuf;
+
+    #[test]
+    fn test_valid_load_csv() {
+        let filename = PathBuf::from("./input/challenge.csv");
+        let csv_data = load_csv(filename);
+        assert!(csv_data.is_ok());
+    }
+
+    #[test]
+    fn test_invalid_load_csv() {
+        let filename = PathBuf::from("./input/none.csv");
+        let csv_data = load_csv(filename);
+        assert!(csv_data.is_err());
+    }
+
+    #[test]
+    fn test_valid_write_csv() {
+        //let filename = PathBuf::from("./input/challenge.csv");
+        let modified_data = r"a,b,c,d,e\nf,g,h,i,j";
+        let output_file = write_csv(&modified_data, "output/test.csv");
+        assert!(output_file.is_ok());
+    }
+}
