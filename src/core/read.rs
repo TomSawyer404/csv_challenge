@@ -1,11 +1,25 @@
 // Declared in `mod.rs`
 use super::{Error, File, PathBuf, Read, Write};
 
+/// # Usage
+/// ```ignore
+/// use std::path::PathBuf;
+/// let filename = PathBuf::from("./files/challenge.csv");
+/// let csv_data = load_csv(filename);
+/// assert!(csv_data.is_ok());
+/// ```
 pub fn load_csv(csv_file: PathBuf) -> Result<String, Error> {
     let file = read(csv_file)?;
     Ok(file)
 }
 
+/// # Usage
+/// ```ignore
+/// use std::path::PathBuf;
+/// let filename = PathBuf::from("./files/challenge.csv");
+/// let csv_data = load_csv(filename);
+/// assert!(csv_data.is_ok());
+/// ```
 pub fn write_csv(csv_data: &str, filename: &str) -> Result<(), Error> {
     write(csv_data, filename)?;
     Ok(())
