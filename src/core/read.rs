@@ -1,7 +1,5 @@
-use super::Error;
-use std::fs::File;
-use std::io::prelude::*;
-use std::path::PathBuf;
+// Declared in `mod.rs`
+use super::{Error, File, PathBuf, Read, Write};
 
 pub fn load_csv(csv_file: PathBuf) -> Result<String, Error> {
     let file = read(csv_file)?;
