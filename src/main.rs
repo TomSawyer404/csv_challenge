@@ -1,12 +1,6 @@
-mod core;
-mod err;
-mod opt;
-
-use self::core::{
-    read::{load_csv, write_csv},
-    write::replace_column,
+use csv_challenge::{
+    replace_column, Opt, {load_csv, write_csv},
 };
-use self::opt::Opt;
 use std::path::PathBuf;
 use std::process;
 use structopt::StructOpt;
